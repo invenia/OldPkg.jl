@@ -116,7 +116,7 @@ function sanity_check(deps::Dict{String,Dict{VersionNumber,Available}},
             sub_deps = Query.prune_dependencies(sub_reqs, sub_deps, bktrc)
         catch err
             isa(err, PkgError) || rethrow(err)
-            ## @info "ERROR MESSAGE:\n" * err.msg
+            @info "ERROR MESSAGE:\n" * err.msg
             for vneq in eq_classes[p][vn]
                 push!(problematic, (p, vneq, ""))
             end
